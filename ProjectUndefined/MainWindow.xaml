@@ -1,0 +1,102 @@
+﻿<Window x:Class="ProjectUndefined.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Closing="Window_Closing"       
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectUndefined"
+        mc:Ignorable="d"
+        Title="Budget App" Height="450" Width="800" x:Name="BudgetWindow"
+        >
+    <Grid x:Name="BudgetGrid">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="4.5*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <!--Current setting are for the filter checkboxes. Change if needed-->
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        
+        <TextBox x:Name="txtSearchBar" Grid.Column="1" Margin="4" Width="450" HorizontalAlignment="Right" PreviewMouseDown="txtSearchBar_PreviewMouseDown" Foreground="Gray" Text="Search..." />
+        <Button x:Name="btnSearchBar" Click="btnSearchBar_Click" Grid.Column="2" Margin="4" Width="70" HorizontalAlignment="Left">Search</Button>
+
+        <Menu Grid.Row="0" x:Name="FileMenu">
+            <MenuItem Header="File" >
+                <MenuItem x:Name="btnOpen" Header="Open existing file" Click="btnOpen_Click"/>
+                <MenuItem x:Name="btnCreateNewFile" Header="Create new file" Click="btnCreateNewFile_Click"/>
+                <MenuItem x:Name="btnDuplicateFile" Header="Duplicate file" Click="btnDuplicateFile_Click"/>
+                <MenuItem x:Name="btnOpenInNewWindow" Header="Open existing file in a new window" Click="btnOpenInNewWindow_Click"/>
+                <MenuItem x:Name="btnExit" Header="Exit" Click="btnExit_Click" />
+            </MenuItem>
+        </Menu>
+
+        <!--FILTER BY CATEGORY AND OR MONTH-->
+
+        <GroupBox Margin="3" Grid.Row="1" Grid.Column="0" x:Name="gbFilter">
+            <GroupBox.Header>
+                Filter
+            </GroupBox.Header>
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <DatePicker x:Name="dpStart" SelectedDateChanged="eventChangeFilter" Text="Start Date" Margin="0,4,0,4"/>
+                <DatePicker x:Name="dpEnd" SelectedDateChanged="eventChangeFilter" Margin="0,4,0,4"/>
+                <CheckBox x:Name="chkFilterCategory" Checked="eventChangeFilter" Unchecked="eventChangeFilter" Content="Filter by Category" Margin="0,4,0,4"/>
+                <ComboBox x:Name="cmbCategoryList" SelectionChanged="eventChangeFilter" Margin="0,4,0,4"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--===============================-->
+        <!--SUMMARY OF CATEGORY AND OR MONTH-->
+        <GroupBox Margin="3" Grid.Row="2" Grid.Column="0" x:Name="gbSummary">
+            <GroupBox.Header>
+                Summary
+            </GroupBox.Header>
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                <CheckBox x:Name="chkSummaryCategory" Checked="eventChangeFilter" Unchecked="eventChangeFilter" Margin="0,4,0,4">Filter by Category</CheckBox>
+                <CheckBox x:Name="chkSummaryMonth" Checked="eventChangeFilter" Unchecked="eventChangeFilter" Margin="0,4,0,4">Filter by Month</CheckBox>
+            </StackPanel>
+        </GroupBox>
+
+        <!--===============================-->
+        <!--SUMMARY OF CATEGORY AND OR MONTH-->
+
+        <Button x:Name="btnOpenExpenses" Click="btnOpenExpenses_Click" Grid.Row="3" Margin="4">Add Expense</Button>
+
+        <!--===============================-->
+
+
+        <!--Background color change-->
+
+        <ComboBox x:Name="Menu" Margin="0,6,0,79" Grid.Column="0" Grid.ColumnSpan="1" Width="NaN" RenderTransformOrigin="0.5,0.5" Grid.Row="4" >
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+
+            <ComboBoxItem x:Name="DarkMode" Selected="DarkMode_Selected">Dark Mode</ComboBoxItem>
+            <ComboBoxItem x:Name="LightMode" Selected="LightMode_Selected">Light Mode</ComboBoxItem>
+            <ComboBoxItem x:Name="Ocean" Selected="Ocean_Selected">Ocean</ComboBoxItem>
+            <ComboBoxItem x:Name="GreenMix" Selected="GreenMix_Selected">Mix of Green</ComboBoxItem>
+            <ComboBoxItem x:Name="Sunset" Selected="Sunset_Selected">Sunset</ComboBoxItem>
+        </ComboBox>
+
+
+        <!--DATA GRID-->
+        <DataGrid Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="2" x:Name="BudgetItemGrid" MouseDoubleClick="BudgetItemGrid_MouseDoubleClick" AutoGenerateColumns="False" CanUserAddRows="false">
+
+        </DataGrid>
+
+    </Grid>
+</Window>

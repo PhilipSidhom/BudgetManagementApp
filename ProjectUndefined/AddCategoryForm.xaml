@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProjectUndefined.AddCategoryForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Closing="Window_Closing"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectUndefined"
+        mc:Ignorable="d"
+        Title="AddCategoryTemplate" Height="450" Width="800"  FontFamily="Consolas">
+    <Grid>
+
+        <StackPanel Height="434" VerticalAlignment="Top">
+            <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Height="47" VerticalAlignment="Top" Margin="0,10,0,0">Add New Category</TextBlock>
+            <TextBox x:Name="txtCategory" Width="318" Height="42"/>
+        </StackPanel>
+        
+        <TextBlock Margin="0,108,0,310" HorizontalAlignment="Center">Category Type</TextBlock>
+        <ComboBox Margin="239,129,244,273">
+
+        </ComboBox>
+        <Button x:Name="btnAddCategory" Click="btnAddCategory_Click" Content="Add Category" Width="121" FontSize="16" Margin="239,184,439,217" />
+        <Button Width="121" Content="Cancel" FontSize="16" Margin="0,184,244,217" HorizontalAlignment="Right"/>
+
+    </Grid>
+</Window>

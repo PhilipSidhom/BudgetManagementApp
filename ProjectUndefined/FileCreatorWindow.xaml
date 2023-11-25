@@ -1,0 +1,32 @@
+﻿<Window x:Class="ProjectUndefined.FileCreatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectUndefined"
+        mc:Ignorable="d"
+        Title="FileCreatorWindow" Height="300" Width="410">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" FontSize="20" HorizontalAlignment="Center">
+            <TextBlock>
+                File Creator
+            </TextBlock>
+        </Label>
+        <Label Grid.Row="1" FontSize="15" HorizontalAlignment="Left">
+            <TextBlock>
+               Please enter the name of the new file:
+            </TextBlock>
+        </Label>
+        <TextBox x:Name="fileNameText"  Grid.Row="1" HorizontalAlignment="Right" Width="128" Height="21" Margin="0,0,10,0"></TextBox>
+
+        <Button x:Name="btnFindLocation" Content="Choose location" Grid.Row="3" HorizontalAlignment="Center" Margin="10,30,20,10" FontSize="25" Click="btnFindLocation_Click"/>
+
+    </Grid>
+</Window>
